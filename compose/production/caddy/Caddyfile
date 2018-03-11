@@ -1,0 +1,11 @@
+www.https://github.com/eugordd/django-pump-trading-bot {
+    redir https://https://github.com/eugordd/django-pump-trading-bot
+}
+https://github.com/eugordd/django-pump-trading-bot {
+    proxy / django:5000 {
+        transparent
+    }
+    log stdout
+    errors stdout
+    gzip
+}

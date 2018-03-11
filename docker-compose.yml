@@ -1,0 +1,47 @@
+version: '2'
+
+volumes:
+  postgres_data_local: {}
+  postgres_backup_local: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    environment:
+      - POSTGRES_USER=pump_bot
+    ports:
+      - "8000:8000"
+    command: /start.sh
+    restart: always
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    volumes:
+      - postgres_data_local:/var/lib/postgresql/data
+      - postgres_backup_local:/backups
+    environment:
+      - POSTGRES_USER=pump_bot
+
+
+
+
+
+  webpack:
+    build:
+      context: .
+      dockerfile: ./compose/local/webpack/Dockerfile
+    command: npm run dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    restart: always
