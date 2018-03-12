@@ -20,16 +20,11 @@ psycopg2==2.7.3.2
 django-redis==4.8.0
 redis==2.10.6
 
-
-
 # Requests
 requests==2.18.4
 
 # improved REPL
 ptpython==0.41
-
-# webpack-loader
-django-webpack-loader==0.5.0
 
 # static files
 whitenoise==3.3.1

@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
 {% load static %}
-{% load render_bundle from webpack_loader %}
 
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>django-pump-trading-bot</title>
+    <title>django-pump-sadtrading-bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#27a83b">
     <meta property="og:type" content="website">
@@ -14,7 +12,7 @@
     <meta property="og:site_name" content="django-pump-trading-bot">
     <meta property="og:url" content="https://https://github.com/eugordd/django-pump-trading-bot">
     <meta property="og:description" content="Django/Vue pump trading bot for Yobit-platform">
-    <meta name="description" content="Django/Vue pump trading bot for Yobit-platform">
+    <meta name="description" content="Django/ыVue pump trading bot for Yobit-platform">
 
     <!-- favicons for all devices. recommended generator: https://realfavicongenerator.net/ -->
     <meta property="og:image" content="{% static 'images/favicons/apple-touch-icon.png' %}">
@@ -32,8 +30,5 @@
     <div id="main"></div>
   </body>
 
-  
-  
-  
-  {% render_bundle 'main' %}
+  <script src="{% if DEBUG %}http://localhost:3000{% endif %}{% static 'dist/build.js' %}" async></script>
 </html>

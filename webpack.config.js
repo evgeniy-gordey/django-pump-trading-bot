@@ -1,6 +1,4 @@
 var webpack = require('webpack')
-var BundleTracker  = require('webpack-bundle-tracker')
-
 
 // ==================== MAIN SETTINGS ====================
 module.exports = {
@@ -40,9 +38,7 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new BundleTracker({filename: './webpack.json'})
-    ],
+    plugins: [],
     resolve: {
         alias: {'vue$': 'vue/dist/vue.esm.js'}
     }

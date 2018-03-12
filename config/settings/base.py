@@ -228,16 +228,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-# WEBPACK LOADER CONFIGURATION
-# ------------------------------------------------------------------------------
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE': str(ROOT_DIR.path('webpack.json'))
-    }
-}
-
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = [
@@ -257,9 +247,3 @@ ADMIN_URL = r'^admin/'
 
 # Mailgun api
 DJANGO_MAILGUN_API_PUB = env('DJANGO_MAILGUN_API_PUB', default=None)
-
-
-
-
-
-
