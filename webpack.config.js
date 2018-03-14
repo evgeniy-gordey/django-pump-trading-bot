@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === 'production') {
         path: '/app/staticfiles/dist/',
         publicPath: 'http://localhost:3000/static/dist/',
         
-        filename: '[name]-[hash].js'
+        filename: 'build.js'
     },
     
     module.exports.plugins.push(
@@ -69,7 +69,7 @@ if (process.env.NODE_ENV === 'development') {
     module.exports.output = {
         path: '/app/pump_bot/static/dist/',
         publicPath: 'http://localhost:3000/static/dist/',
-        filename: '[name]-[hash].js'
+        filename: 'build.js'
     },
     module.exports.plugins.push(
         new webpack.DefinePlugin({'process.env': {NODE_ENV: '"development"'}}),

@@ -6,10 +6,12 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import logout
 
 from config.api import api
+from pump_bot.trades import trade
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(api.urls)),
+    url(r'^api/trade/$', trade),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout')
 ]
