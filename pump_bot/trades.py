@@ -2,6 +2,7 @@ import requests
 
 from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
+from yobit import Yobit
 
 @api_view(['POST'])
 @permission_classes([])
@@ -10,6 +11,9 @@ def trade(request):
     buyRate = request.data.get('buyRate')
     sellRate = request.data.get('sellRate')
     currency = request.data.get('currency')
-    url = 'https://yobit.net/api/2/' + currency + '_btc/ticker'
-    r = requests.get(url)
-    return JsonResponse(r.text, safe=False)
+    pair = currency + '_btc'
+    
+    yobit = Yobit()
+    ticker = yobit.ticker(pair)
+    
+    return JsonResponse(ticker, safe=False)
