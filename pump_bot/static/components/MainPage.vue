@@ -1,6 +1,6 @@
 <template>
   <div class="main-page">
-    <h1>Django Pump-trading bot</h1>
+    <h1>Django Pump-trading bot 2</h1>
     <!-- <div>
       <label for="amount">Amount</label>
       <input type="number" v-model="amount">
