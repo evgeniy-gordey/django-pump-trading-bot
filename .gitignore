@@ -1,0 +1,16 @@
+.env
+
+# npm
+node_modules/
+
+# Basics
+*.py[cod]
+__pycache__
+
+# Logs
+logs
+*.log
+pip-log.txt
+npm-debug.log*
+package-lock.json
+yarn.lock
