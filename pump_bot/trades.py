@@ -8,12 +8,14 @@ from yobit import Yobit
 @permission_classes([])
 def trade(request): 
     amount = request.data.get('amount')
-    buyRate = request.data.get('buyRate')
-    sellRate = request.data.get('sellRate')
+    buy_rate = request.data.get('buyRate')
+    sell_rate = request.data.get('sellRate')
     currency = request.data.get('currency')
+    
     pair = currency + '_btc'
     
     yobit = Yobit()
-    ticker = yobit.ticker(pair)
+    # ticker = yobit.ticker(pair)
+    get_info = yobit.get_info()
     
-    return JsonResponse(ticker, safe=False)
+    return JsonResponse(get_info, safe=False)

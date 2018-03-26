@@ -15,20 +15,6 @@ APPS_DIR = ROOT_DIR.path('pump_bot')
 # Load operating system environment variables and then prepare to use them
 env = environ.Env()
 
-# ENVIRONS
-# ------------------------------------------------------------------------------
-# .env file, needs to be loaded in production environment
-# Operating System Environment variables have precedence over variables defined in the .env file,
-# that is to say variables from the .env files will only be used if not defined
-# as environment variables.
-try:
-    env_file = str(ROOT_DIR.path('.env'))
-    print(f'Loading : {env_file}')
-    env.read_env(env_file)
-    print('The .env file has been loaded')
-except:
-    print('The .env file has been not loaded')
-
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [

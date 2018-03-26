@@ -6,6 +6,10 @@ import time
 import hmac
 import hashlib
 import json
+import environ
+
+env = environ.Env()
+
 try:
     from urllib import urlencode
     from urlparse import urljoin
@@ -14,9 +18,11 @@ except ImportError:
     from urllib.parse import urljoin
 import requests
 
-BASE_PUBLIC = 'https://yobit.net/api/3/'
-BASE_TRADE = 'https://yobit.net/tapi'
+# BASE_PUBLIC = 'https://yobit.net/api/3/'
+# BASE_TRADE = 'https://yobit.net/tapi'
 
+BASE_PUBLIC = env('BASE_PUBLIC')
+BASE_TRADE = env('BASE_TRADE')
 
 def refactor_result(json_ob):
     return json.dumps(json_ob, sort_keys=True, indent=4, separators=(',', ': '))
@@ -27,7 +33,7 @@ class Yobit(object):
         API key and API secret are used for Trade API
     """
 
-    def __init__(self, api_key='', api_secret=''):
+    def __init__(self, api_key=env('API_KEY'), api_secret=env('API_SECRET')):
         self.api_key = str(api_key) if api_key is not None else ''
         self.api_secret = str(api_secret) if api_secret is not None else ''
         if api_key == '' or api_secret == '':
@@ -77,7 +83,7 @@ class Yobit(object):
 
         request_url = BASE_TRADE
         options['method'] = method
-        options['nonce'] = str(int(time.time()))
+        options['nonce'] = str(time.time())[:10]
 
         body = urlencode(options)
 

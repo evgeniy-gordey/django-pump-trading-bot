@@ -13,8 +13,7 @@ services:
       - postgres
     volumes:
       - .:/app
-    environment:
-      - POSTGRES_USER=pump_bot
+    env_file: .env
     ports:
       - "8000:8000"
     command: /start.sh
@@ -27,8 +26,7 @@ services:
     volumes:
       - postgres_data_local:/var/lib/postgresql/data
       - postgres_backup_local:/backups
-    environment:
-      - POSTGRES_USER=pump_bot
+    env_file: .env
 
   webpack:
     build:
@@ -38,6 +36,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    env_file: .env
     ports:
       - "3000:3000"
     restart: always
